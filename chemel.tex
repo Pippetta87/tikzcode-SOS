@@ -4,8 +4,6 @@
 
 \begin{tikzpicture}
 
-\pgfplotstableread[skip row between index={8}{14}]{comp-ags.txt}\actualC
-\pgfplotstableread[skip row between index={1}{7}]{comp-ags.txt}\primordialC
 
 
 \pgfplotstabletypeset[col sep=space,
@@ -16,7 +14,7 @@ display columns/zx/.style={column name={$\frac{Z}{X}$}},
 create on use/authors/.style={create col/set list={Anders \& Grevesse (1989),Grevesse \& Noels (1993),Grevesse \& Sauval (1998),Lodders (2003),Asplund Grevesse \& Sauval (2005),Lodders Palme \& Gail (2009),\cite{asplund2009chemical}},
 columns={authors,x, y, z, zx},
 /pgf/number format/precision=4
-     ]{\actualC};
+     ]{asplundactual.txt};
 
 \end{tikzpicture}
 
