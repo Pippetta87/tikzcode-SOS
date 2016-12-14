@@ -6,6 +6,10 @@
 -3.8682 1.5055
 2.1272 -8.3619
 1.1862 -4.6269
+-3.8682 1.5055
+2.1272 -8.3619
+1.1862 -4.6269
+1.1862 -4.6269
 }\tabledon
 
 \pgfplotstabletypeset[
@@ -23,8 +27,9 @@
     display columns/2/.style={column name={$c_1$}},
     /pgf/number format/precision=4,
     create on use/newcol/.style={
-        create col/set list={$u \times 10^2$,$v \times 10^6$,$w \times 10^3$}
+        create col/set list={$u \times 10^2$,$v \times 10^6$,$w \times 10^3$,$u \times 10^2$,$v \times 10^6$,$u \times 10^2$,$v \times 10^6$}
     },
+    create on use/authors/.style={create col/set list={Anders \& Grevesse (1989),Grevesse \& Noels (1993),Grevesse \& Sauval (1998),Lodders (2003),Asplund Grevesse \& Sauval (2005),Lodders Palme \& Gail (2009),\cite{asplund2009chemical}},
     columns/newcol/.style={string type},
     columns={newcol,0,1}
 ]{\tabledon}
