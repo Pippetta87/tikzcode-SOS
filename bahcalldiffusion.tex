@@ -4,7 +4,7 @@
 
 
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
-\pgfkeys{dec sep={.}}
+
 
 \begin{tikzpicture}
 \begin{axis}[name=density, at=(0,0),
@@ -17,7 +17,7 @@
     },
     x tick label style={
         /pgf/number format/.cd,
-           sci,
+           fixed,
             precision=2,
         /tikz/.cd
     },
@@ -26,7 +26,7 @@
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using 0:3};
+\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
 \begin{axis}[name=temp,at=(density.south),anchor=north,
