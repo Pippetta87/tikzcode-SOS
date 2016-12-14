@@ -2,9 +2,6 @@
 
 \begin{document}
 
-%\pgfplotstabletypeset{pgfplotstable.example1.dat}
-%\pgfplotstableread[dec sep={\,},sci]{ssm.txt}
-%\loadedtable
 
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
 
@@ -14,13 +11,13 @@
         /pgf/number format/.cd,
             fixed,
             fixed zerofill,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
            sci,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
   xlabel=Mass,
@@ -36,13 +33,13 @@
         /pgf/number format/.cd,
             fixed,
             fixed zerofill,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
            sci,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
   xlabel=Mass,
@@ -58,13 +55,13 @@
         /pgf/number format/.cd,
             fixed,
             fixed zerofill,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
            sci,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
   xlabel=Mass,
@@ -79,13 +76,13 @@
         /pgf/number format/.cd,
             fixed,
             fixed zerofill,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
            sci,
-            precision=3,
+            precision=10,
         /tikz/.cd
     },
   xlabel=Mass,
