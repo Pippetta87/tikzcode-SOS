@@ -45,12 +45,12 @@
   xlabel=Mass,
   ylabel=T]
 
-\addplot gnuplot [raw gnuplot,id=test,no marks,smooth]{plot 'ssm.txt' using 0:2};
+\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'ssm.txt' using 0:2};
 
 \end{axis}
 
 
-\begin{axis}[name=luminosity,at=(temp.east),anchor=west,
+\begin{axis}[name=luminosity,at=($(temp.east)+(25,-25)$),anchor=west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -67,27 +67,25 @@
   xlabel=Mass,
   ylabel=L]
 
-\addplot gnuplot [raw gnuplot,id=test,no marks,smooth]{plot 'ssm.txt' using 0:5};
+\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'ssm.txt' using 0:5};
 
 \end{axis}
 
-\begin{axis}[name=hydrogen,at={($(luminosity.north)+(30,30)$)},anchor=south,
+\begin{axis}[name=hydrogen,at={($(luminosity.north)+(25,30)$)},anchor=south,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
-            precision=6,
-        /tikz/.cd
+            precision=5
     },
     x tick label style={
         /pgf/number format/.cd,
            fixed,
-            precision=4,
-        /tikz/.cd
+            precision=6
     },
   xlabel=Mass,
   ylabel=X]
 
-\addplot gnuplot [raw gnuplot,id=test,no marks,smooth]{plot 'ssm.txt' using 0:6};
+\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' using 0:6};
 
 \end{axis}
 
