@@ -3,10 +3,10 @@
 \begin{document}
 
 
-\pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
+\pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks, set decimal separator={,}}
 
 \begin{tikzpicture}
-\begin{axis}[name=density,
+\begin{axis}[name=density, at=(0,0),
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -50,7 +50,7 @@
 \end{axis}
 
 
-\begin{axis}[name=luminosity,at={($(temp.east)+(25,-25)$)},anchor=west,
+\begin{axis}[name=luminosity,at={($(temp.east)+(25,-30)$)},anchor=west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
