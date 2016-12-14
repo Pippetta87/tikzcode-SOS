@@ -4,6 +4,7 @@
 
 \begin{tikzpicture}
 
+\begin{table}[h!]
 \pgfplotstabletypeset[col sep=space,
 header=has colnames,
 %display columns/0/.style={column name={}},
@@ -15,6 +16,7 @@ header=has colnames,
 columns={x, y, z, zx},
 /pgf/number format/precision=4
      ]{asplundactual.txt};
+\end{table}
 
 \end{tikzpicture}
 
