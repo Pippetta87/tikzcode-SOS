@@ -34,10 +34,11 @@
 
 
 \pgfplotstabletypeset[
-display columns/0/.style={column name={$X$}},
-display columns/1/.style={column name={$Y$}},
-display columns/2/.style={column name={$Z$}},
-display columns/3/.style={column name={$\frac{Z}{X}$}},
+display columns/0/.style={column name={}},
+display columns/1/.style={column name={$X$}},
+display columns/2/.style={column name={$Y$}},
+display columns/3/.style={column name={$Z$}},
+display columns/4/.style={column name={$\frac{Z}{X}$}},
 create on use/authors/.style={create col/set list={Anders \& Grevesse (1989),Grevesse \& Noels (1993),Grevesse \& Sauval (1998),Lodders (2003),Asplund Grevesse \& Sauval (2005),Lodders Palme \& Gail (2009),\cite{asplund2009chemical}},
 columns={authors,x, y, z, zx},
 /pgf/number format/precision=4
