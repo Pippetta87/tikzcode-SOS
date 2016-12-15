@@ -7,7 +7,7 @@
 
 
 \begin{tikzpicture}[remember picture,overlay]
-\begin{axis}[name=density, at={(0,-10)++(135:5cm)},anchor=south east,
+\begin{axis}[name=density, at={([shift={(2,2)}]current page.north west)},anchor=north west	,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -28,7 +28,7 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\begin{axis}[name=temp,at={(0,-10)++(-45:5cm)},anchor=north west,
+\begin{axis}[name=temp,at={([shift={(-2,2)}]current page.south east)},anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -69,7 +69,7 @@
 
 \end{axis}
 
-\begin{axis}[name=hydrogen,at={(0,-10)++(45:5cm)},anchor=south west,
+\begin{axis}[name=hydrogen,at={([shift={(-2,-2)}]current page.north east)},anchor=south west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
