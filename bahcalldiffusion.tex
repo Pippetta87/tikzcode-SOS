@@ -7,7 +7,9 @@
 
 
 \begin{tikzpicture}[remember picture,overlay]
-\begin{axis}[name=density, at={([shift={(2,2)}]current page.north west)},anchor=north west	,
+
+\coordinate (coordd) at ([shift={(2,2)}]current page.north west);
+\begin{axis}[name=density, at=(coordd),anchor=north west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
