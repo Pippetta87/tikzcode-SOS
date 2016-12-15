@@ -5,11 +5,11 @@
 
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
 
-\pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
-\pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
-\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
-\pgfkeys{/pgf/fixed point arithmetic}
-\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
+%\pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
+%\pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
+%\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
+%\pgfkeys{/pgf/fixed point arithmetic}
+%\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
 
 
 \begin{tikzpicture}[remember picture,overlay]
@@ -34,7 +34,7 @@
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using 1:4};
+\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{set format x "%8.6f", plot 'ssm.txt' using 1:4};
 \end{axis}
 
 \coordinate (coordt) at ([shift={(-1,1)}]current page.south east);
