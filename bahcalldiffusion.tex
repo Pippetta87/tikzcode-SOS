@@ -11,7 +11,6 @@
  y tick label style={
         /pgf/number format/.cd,
             fixed,
-            fixed zerofill,
             precision=2,
         /tikz/.cd
     },
@@ -29,18 +28,17 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\begin{axis}[name=temp,at=(density.south),anchor=north,
+\begin{axis}[name=temp,at={($(density.south)+(0,-20)$),anchor=north,
  y tick label style={
         /pgf/number format/.cd,
-            fixed,
-            fixed zerofill,
+            sci,
             precision=2,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
-           sci,
-            precision=2,
+           fixed,
+            precision=3,
         /tikz/.cd
     },
   xlabel=Mass,
@@ -51,18 +49,17 @@
 \end{axis}
 
 
-\begin{axis}[name=luminosity,at={($(temp.east)+(25,-30)$)},anchor=west,
+\begin{axis}[name=luminosity,at={($(temp.east)+(35,-30)$)},anchor=west,
  y tick label style={
         /pgf/number format/.cd,
-            fixed,
-            fixed zerofill,
-            precision=2,
+            sci,
+            precision=4,
         /tikz/.cd
     },
     x tick label style={
         /pgf/number format/.cd,
            sci,
-            precision=2,
+            precision=3,
         /tikz/.cd
     },
   xlabel=Mass,
