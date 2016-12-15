@@ -8,7 +8,8 @@
 
 \begin{tikzpicture}[remember picture,overlay]
 
-\coordinate (coordd) at ([shift={(2,2)}]current page.north west);
+\coordinate (coordd) at ([shift={(0,-10)}]current page.north west);
+
 \begin{axis}[name=density, at=(coordd),anchor=north west,
  y tick label style={
         /pgf/number format/.cd,
@@ -71,7 +72,7 @@
 
 \end{axis}
 
-\coordinate (coordh) at ([shift={(-10,-10)}]current page.north east);
+\coordinate (coordh) at ([shift={(0,0)}]current page.north east);
 \begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
  y tick label style={
         /pgf/number format/.cd,
