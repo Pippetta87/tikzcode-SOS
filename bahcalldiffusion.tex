@@ -5,15 +5,14 @@
 
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
 
-
-\begin{tikzpicture}[remember picture,overlay]
-
-
 \pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
 \pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
 \pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
 \pgfkeys{/pgf/fixed point arithmetic}
 \pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
+
+
+\begin{tikzpicture}[remember picture,overlay]
 
 \coordinate (coordd) at ([shift={(2,-1)}]current page.north west);
 
