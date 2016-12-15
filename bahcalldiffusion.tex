@@ -28,7 +28,7 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\begin{axis}[name=temp,at={(0,0)++(225:5mm)},anchor=north west,
+\begin{axis}[name=temp,at={(0,-10)++(-45:1cm)},anchor=north west,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -69,7 +69,7 @@
 
 \end{axis}
 
-\begin{axis}[name=hydrogen,at={(45:1cm)},anchor=south west,
+\begin{axis}[name=hydrogen,at={(0,-10)++(45:1cm)},anchor=south west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -88,5 +88,7 @@
 \end{axis}
 
 \end{tikzpicture}
+
+\clearpage
 
 \end{document}
