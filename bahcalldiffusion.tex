@@ -7,7 +7,7 @@
 
 
 \begin{tikzpicture}
-\begin{axis}[name=density, at={($(0,0)++(135:1cm)$)},anchor=south east},
+\begin{axis}[name=density, at={($(0,0)++(135:1cm)$)},anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -28,7 +28,7 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\begin{axis}[name=temp,at={($(0,0)+1cm:225)$)},anchor=north,
+\begin{axis}[name=temp,at={($(0,0)++(225:1cm)$)},anchor=north,
  y tick label style={
         /pgf/number format/.cd,
             sci,
