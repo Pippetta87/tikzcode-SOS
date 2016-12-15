@@ -8,7 +8,7 @@
 
 \begin{tikzpicture}[remember picture,overlay]
 
-\coordinate (coordd) at ([shift={(0,-10)}]current page.north west);
+\coordinate (coordd) at ([shift={(1,-1)}]current page.north west);
 
 \begin{axis}[name=density, at=(coordd),anchor=north west,
  y tick label style={
@@ -31,7 +31,7 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\coordinate (coordt) at ([shift={(-2,2)}]current page.south east);
+\coordinate (coordt) at ([shift={(-1,1)}]current page.south east);
 \begin{axis}[name=temp,at=(coordt),anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
@@ -52,7 +52,7 @@
 
 \end{axis}
 
-\coordinate (coordl) at ([shift={(-2,2)}]current page.south west);
+\coordinate (coordl) at ([shift={(-1,1)}]current page.south west);
 \begin{axis}[name=luminosity,at=(coordl),anchor=south west,
  y tick label style={
         /pgf/number format/.cd,
@@ -73,7 +73,7 @@
 
 \end{axis}
 
-\coordinate (coordh) at ([shift={(-2,-2)}]current page.north east);
+\coordinate (coordh) at ([shift={(-1,-1)}]current page.north east);
 \begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
  y tick label style={
         /pgf/number format/.cd,
