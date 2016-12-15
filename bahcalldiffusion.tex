@@ -23,8 +23,8 @@
             precision=3,
         /tikz/.cd
     },
-  xlabel=Mass,
-  ylabel=density]
+  xlabel=$\frac{M}{\msun{}}$,
+  ylabel=$\rho(\si{\gram\per\cubic\cm})$]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
@@ -62,7 +62,7 @@
     },
     x tick label style={
         /pgf/number format/.cd,
-           sci,
+           fixed,
             precision=3,
         /tikz/.cd
     },
