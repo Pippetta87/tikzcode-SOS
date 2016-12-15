@@ -6,7 +6,7 @@
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
 
 
-\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{tikzpicture}[remember picture,overlay]
 \begin{axis}[name=density, at={(0,-10)++(135:5cm)},anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
