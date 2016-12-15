@@ -71,7 +71,8 @@
 
 \end{axis}
 
-\begin{axis}[name=hydrogen,at ([shift={(-10,-10)}]current page.north east),anchor=north east,
+\coordinate (coordh) at ([shift={(-10,-10)}]current page.north east);
+\begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
