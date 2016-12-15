@@ -28,7 +28,7 @@
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
+\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' index 0, index 3};
 \end{axis}
 
 \coordinate (coordt) at ([shift={(-1,1)}]current page.south east);
@@ -48,7 +48,7 @@
   xlabel=Mass,
   ylabel=T]
 
-\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'ssm.txt' index 0, index 1};
+\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'ssm.txt' index 0, index 2};
 
 \end{axis}
 
@@ -69,7 +69,7 @@
   xlabel=Mass,
   ylabel=L]
 
-\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'ssm.txt' using 0:5};
+\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'ssm.txt' index 0, index 5};
 
 \end{axis}
 
@@ -88,7 +88,7 @@
   xlabel=Mass,
   ylabel=X]
 
-\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' using 0:6};
+\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' index 0, index 6};
 
 \end{axis}
 
