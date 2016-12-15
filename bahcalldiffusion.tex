@@ -31,7 +31,8 @@
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{plot 'ssm.txt' using ($0):($3)};
 \end{axis}
 
-\begin{axis}[name=temp,at={([shift={(-2,2)}]current page.south east)},anchor=south east,
+\coordinate (coordt) at ([shift={(-2,2)}]current page.south east);
+\begin{axis}[name=temp,at=(coordt),anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -51,8 +52,8 @@
 
 \end{axis}
 
-
-\begin{axis}[name=luminosity,at={([shift={(2,2)}]current page.south west)},anchor=south west,
+\coordinate (coordl) at ([shift={(-2,2)}]current page.south west);
+\begin{axis}[name=luminosity,at=(coordl),anchor=south west,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -72,7 +73,7 @@
 
 \end{axis}
 
-\coordinate (coordh) at ([shift={(0,0)}]current page.north east);
+\coordinate (coordh) at ([shift={(-2,-2)}]current page.north east);
 \begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
  y tick label style={
         /pgf/number format/.cd,
