@@ -14,7 +14,7 @@
 
 \begin{tikzpicture}[remember picture,overlay]
 
-\coordinate (coordd) at ([shift={(3,-1)}]current page.north west);
+\coordinate (coordd) at ([shift={(2.8,-0.5)}]current page.north west);
 
 \begin{axis}[name=density, at=(coordd),anchor=north west,
  y tick label style={
@@ -40,7 +40,7 @@
  \node[black,right] at (axis cs:8,1.5) {$\rho_c$};
 \end{axis}
 
-\coordinate (coordt) at ([shift={(0,1)}]current page.south east);
+\coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
 \begin{axis}[name=temp,at=(coordt),anchor=south east,
  y tick label style={
         /pgf/number format/.cd,
@@ -61,7 +61,7 @@
 
 \end{axis}
 
-\coordinate (coordl) at ([shift={(3,1)}]current page.south west);
+\coordinate (coordl) at ([shift={(2.8,1.5)}]current page.south west);
 \begin{axis}[name=luminosity,at=(coordl),anchor=south west,
  y tick label style={
         /pgf/number format/.cd,
@@ -82,7 +82,7 @@
 
 \end{axis}
 
-\coordinate (coordh) at ([shift={(0,-1)}]current page.north east);
+\coordinate (coordh) at ([shift={(-0.2,-0.5)}]current page.north east);
 \begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
  y tick label style={
         /pgf/number format/.cd,
