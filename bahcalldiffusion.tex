@@ -29,7 +29,7 @@
             precision=1,
         /tikz/.cd
     },
-  xlabel=$\frac{M}{\msun{}}$,
+  xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=$\rho(\si{\gram\per\cubic\cm})$,
   extra y ticks={}
   ]
@@ -38,7 +38,7 @@
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 1:4};
 %\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
-\node[] at ($(coordd)+(4,-2)$) {$a)$};
+\node[] at ($(coordd)+(2,-2)$) {$a)$};
 \end{axis}
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
@@ -55,7 +55,7 @@
             precision=3,
         /tikz/.cd
     },
-  xlabel=$\frac{M}{\msun{}}$,
+  xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=T,
   compat=newest
   %ylabel shift = 5mm
@@ -80,8 +80,8 @@
             precision=3,
         /tikz/.cd
     },
-  xlabel=$\frac{M}{\msun{}}$,
-  ylabel=$\frac{L}{\lsun{}}$,
+  xlabel=$\midfrac{M}{\msun{}}$,
+  ylabel=$\midfrac{L}{\lsun{}}$,
   %ylabel shift = 10mm
   compat=newest
   ]
@@ -105,7 +105,7 @@
             precision=6,
             /tikz/.cd
     },
-  xlabel=$\frac{M}{\msun{}}$,
+  xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=X]
 
 \addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' using 1:7};
