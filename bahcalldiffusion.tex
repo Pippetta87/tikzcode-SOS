@@ -76,7 +76,9 @@
         /tikz/.cd
     },
   xlabel=$\frac{M}{\msun{}}$,
-  ylabel=$\frac{L}{\lsun{}}$]
+  ylabel=$\frac{L}{\lsun{}}$,
+  ylabel shift = 5 pt
+  ]
 
 \addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'ssm.txt' using 1:6};
 
