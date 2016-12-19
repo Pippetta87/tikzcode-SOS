@@ -37,7 +37,8 @@
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
 \addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 1:4};
- \node[black,right] at (axis cs:8,1.5) {$\rho_c$};
+%\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
+\node[] at ($(coordd)+(1,0)$) {$a)$};
 \end{axis}
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
