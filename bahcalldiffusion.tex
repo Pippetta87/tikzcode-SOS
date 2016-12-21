@@ -41,9 +41,9 @@
 %\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
 \end{axis}
 
-\begin{axis}[scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$,grey]
+\begin{axis}[scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
 
-\addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
+\addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
 \end{axis}
 
 
