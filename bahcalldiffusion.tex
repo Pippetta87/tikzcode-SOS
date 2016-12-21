@@ -29,17 +29,23 @@
             precision=1,
         /tikz/.cd
     },
-  xlabel=$\midfrac{M}{\msun{}}$,
-  ylabel=$\rho(\si{\gram\per\cubic\cm})$,
+  ylabel=$\midfrac{M}{\msun{}}$,
+  xlabel=$\midfrac{R}{\rsun{}}$,
   extra y ticks={}
   ]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=rhoM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 1:4};
+\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 2:1};
 %\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
 %\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
 \end{axis}
+
+\begin{axis}[scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$,grey]
+
+\addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
+\end{axis}
+
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
 \begin{axis}[name=temp,at=(coordt),anchor=south east,
