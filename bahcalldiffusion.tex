@@ -16,7 +16,7 @@
 
 \coordinate (coordd) at ([shift={(2.8,-0.5)}]current page.north west);
 
-\begin{axis}[name=density, at=(coordd),anchor=north west,
+\begin{axis}[name=massradius, at=(coordd),anchor=north west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -30,7 +30,7 @@
         /tikz/.cd
     },
   ylabel=$\midfrac{M}{\msun{}}$,
-  xlabel=$\midfrac{R}{\rsun{}}$,
+  xlabel=$\midfrac{R}{\rsun{}}$,axis y line*=right,
   extra y ticks={}
   ]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
@@ -41,7 +41,20 @@
 %\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
 \end{axis}
 
-\begin{axis}[scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
+\begin{axis}[name=densityradius, at=(coordd),anchor=north west,
+ y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=1,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=1,
+        /tikz/.cd
+    },
+    scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
 
 \addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
 \end{axis}
