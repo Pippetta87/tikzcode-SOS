@@ -30,7 +30,7 @@
         /tikz/.cd
     },
   ylabel=$\midfrac{M}{\msun{}}$,
-  xlabel=$\midfrac{R}{\rsun{}}$,axis y line*=right,
+  xlabel=$\midfrac{R}{\rsun{}}$,axis y line*=left,
   extra y ticks={}
   ]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
@@ -54,7 +54,7 @@
             precision=1,
         /tikz/.cd
     },
-    scale only axis,axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
+    axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
 
 \addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
 \end{axis}
