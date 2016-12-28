@@ -29,35 +29,38 @@
             precision=1,
         /tikz/.cd
     },
-  ylabel=$\midfrac{M}{\msun{}}$,
-  xlabel=$\midfrac{R}{\rsun{}}$,axis y line*=left,
+  xlabel=$\midfrac{M}{\msun{}}$,
+  ylabel=$\rho(\si{\cubic\cm})$,axis y line*=left,
   extra y ticks={}
   ]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 2:1};
+\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 1:4};
+\addplot gnuplot [raw gnuplot,id=lenghtden,no marks,smooth]{
+stats 'mydata.dat' every ::::0 using 2 nooutput
+total = int(STATS_min)};
+%plot 'ssm.txt' u 1:1 smooth bezier}
 %\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
 %\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
 \end{axis}
 
-\begin{axis}[name=densityradius, at=(coordd),anchor=north west,
- y tick label style={
-        /pgf/number format/.cd,
-            fixed,
-            precision=1,
-        /tikz/.cd
-    },
-    x tick label style={
-        /pgf/number format/.cd,
-           fixed,
-            precision=1,
-        /tikz/.cd
-    },
-    axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
-
-\addplot gnuplot [raw gnuplot,id=rhoR,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
-\end{axis}
+%\begin{axis}[name=densityradius, at=(coordd),anchor=north west,
+%y tick label style={
+%       /pgf/number format/.cd,
+%          fixed,
+%          precision=1,
+%       /tikz/.cd
+%  },
+%  x tick label style={
+%      /pgf/number format/.cd,
+%         fixed,
+%          precision=1,
+%      /tikz/.cd
+%  },
+%  axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
+%\addplot gnuplot [raw gnuplot,id=rdens,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
+%\end{axis}
 
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
