@@ -3,7 +3,10 @@
 \begin{document}
 
 
-\pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black},no marks}
+\pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black}
+}
+
+\tikzset{ every pin/.style={fill=black!10!white,rectangle,rounded corners=3pt,font=\tiny}, small dot/.style={fill=black,circle,scale=0.1} }
 
 %\pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
 %\pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
@@ -11,12 +14,38 @@
 %\pgfkeys{/pgf/fixed point arithmetic}
 %\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
 
+\pgfkeys{/pgf/fpu=true}
+\pgfmathparse{5.670367*10^(-8)}
+\edef\sigmaB{\pgfmathresult} %% Wm-2K-4
+\pgfmathparse{3.844*10^(26)}
+\edef\solarL{\pgfmathresult}%%%
+\pgfmathparse{6.96*10^8}
+\edef\Sradius{\pgfmathresult}%%%meter
+\pgfmathparse{(\solarL/(4*pi*\Sradius^2*\sigmaB))^(1/4)}%
+
+$T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
+
+\pgfmathparse{1-0.024}
+Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathresult}$
+
+\pgfkeys{/pgf/fpu=false}
+
+\clearpage
 
 \begin{tikzpicture}[remember picture,overlay]
 
-\coordinate (coordd) at ([shift={(2.8,-0.5)}]current page.north west);
+%\begingroup
+%\pgfplotsset{
+%every axis x label/.style={
+%    at={(ticklabel* cs:1.05)},
+%    yshift = -7.5pt,
+%    anchor=west,},
+%    every axis y label/.style={at={(current axis.above origin)},
+%    anchor=north east,
+%    yshift = 1cm}}
 
-\begin{axis}[name=massradius, at=(coordd),anchor=north west,
+\coordinate (coordd) at ([shift={(2.8,-0.5)}]current page.north west);
+\begin{axis}[clip=false,name=massdensity, at=(coordd),anchor=north west,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -30,16 +59,16 @@
         /tikz/.cd
     },
   xlabel=$\midfrac{M}{\msun{}}$,
-  ylabel=$\rho(\si{\cubic\cm})$,axis y line*=left,
+  ylabel=$\rho(\si{\gram\per\cubic\cm})$,axis y line*=left,
   extra y ticks={}
   ]
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
 \addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'ssm.txt' using 1:4};
-\addplot gnuplot [raw gnuplot,id=lenghtden,no marks,smooth]{
-stats 'mydata.dat' every ::::0 using 2 nooutput
-total = int(STATS_min)};
+\node[small dot,pin=90:{$\rho_b=\num{1.831e-1}$}] at (axis cs:1-0.024,1.831e-1) {};
+\node[small dot,pin=-10:{$\rho_c=\num{1.562e2}$}] at (axis cs:0,1.562e2) {};
+
 %plot 'ssm.txt' u 1:1 smooth bezier}
 %\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
 %\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
@@ -61,6 +90,8 @@ total = int(STATS_min)};
 %  axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
 %\addplot gnuplot [raw gnuplot,id=rdens,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'ssm.txt' using 2:4};
 %\end{axis}
+
+%\endgroup
 
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
@@ -84,7 +115,9 @@ total = int(STATS_min)};
   ]
 
 \addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'ssm.txt' using 1:3};
-%\node[] at ($(coordt)+(-2,+3)$) {$c)hjujuhjhjhjhjhjh$};
+\node[small dot,pin=-10:{$T_c=\num{1.5843e7}$}] at (axis cs:0,1.5843e7) {};
+\node[small dot,pin=120:{$T_{cz}=\num{2.204e6}$}] at (axis cs:0.976,2.204e6) {};
+\node[small dot,pin=180:{$\rho_c=\num{5777}$}] at (axis cs:1,5777) {};
 
 \end{axis}
 
@@ -109,7 +142,7 @@ total = int(STATS_min)};
   ]
 
 \addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'ssm.txt' using 1:6};
-%\node[] at ($(coordl)+(2,3)$) {$d)hgkjfuifuifyg$};
+\node[small dot,pin=-120:{$\lsun{}=\SI{3.844}{\erg\per\second}$}] at (axis cs:1,1) {};
 
 \end{axis}
 
@@ -131,7 +164,7 @@ total = int(STATS_min)};
   ylabel=X]
 
 \addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' using 1:7};
-%\node[] at ($(coordh)+(-3,-3)$) {$b)jhbkgkjgykjhjkhg$};
+\node[small dot,pin=-90:{$X_{surf}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
 
 \end{axis}
 
