@@ -6,7 +6,7 @@
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black}
 }
 
-\tikzset{ every pin/.style={fill=black!10!white,rectangle,rounded corners=3pt,font=\tiny}, small dot/.style={fill=black,circle,scale=0.1} }
+\tikzset{ every pin/.style={pin edge={black!10!white},draw={black!10!white},rectangle,rounded corners=3pt,font=\tiny}, small dot/.style={fill=black,circle,scale=0.1} }
 
 %\pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
 %\pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
@@ -95,7 +95,7 @@ Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathr
 
 
 \coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
-\begin{axis}[name=temp,at=(coordt),anchor=south east,
+\begin{axis}[name=temp,at=(coordt),anchor=south east,axis y line*=left,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -110,19 +110,20 @@ Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathr
     },
   xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=T,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   compat=newest
   %ylabel shift = 5mm
   ]
 
 \addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'ssm.txt' using 1:3};
 \node[small dot,pin=-10:{$T_c=\num{1.5843e7}$}] at (axis cs:0,1.5843e7) {};
-\node[small dot,pin=120:{$T_{cz}=\num{2.204e6}$}] at (axis cs:0.976,2.204e6) {};
-\node[small dot,pin=180:{$\rho_c=\num{5777}$}] at (axis cs:1,5777) {};
+\node[small dot,pin={[pin distance=1cm]177:{$T_{cz}=\num{2.204e6}$}}] at (axis cs:0.976,2.204e6) {};
+\node[small dot,pin=180:{$T_{ph}=\num{5777}$}] at (axis cs:1,5777) {};
 
 \end{axis}
 
 \coordinate (coordl) at ([shift={(2.8,1.5)}]current page.south west);
-\begin{axis}[name=luminosity,at=(coordl),anchor=south west,
+\begin{axis}[name=luminosity,at=(coordl),anchor=south west,axis y line*=left,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -137,6 +138,7 @@ Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathr
     },
   xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=$\midfrac{L}{\lsun{}}$,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   %ylabel shift = 10mm
   compat=newest
   ]
@@ -147,7 +149,8 @@ Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathr
 \end{axis}
 
 \coordinate (coordh) at ([shift={(-0.2,-0.5)}]current page.north east);
-\begin{axis}[name=hydrogen,at=(coordh),anchor=north east,
+\begin{axis}[name=hydrogen,at=(coordh),anchor=north east,axis y line*=left,
+ymax=0.75,xmin=-0.1,ymin=0.32,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -164,9 +167,50 @@ Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathr
   ylabel=X]
 
 \addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'ssm.txt' using 1:7};
-\node[small dot,pin=-90:{$X_{surf}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+%\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+\node[small dot,pin=20:{$X_c=\num{0.3333}$}] at (axis cs:0,0.3333) {};
+
+\coordinate (convectivezone) at (axis cs:0.97,0.73507);
+\coordinate (convectivezonex) at (axis cs:0.97,0.75);
+\coordinate (convectivezoney) at (axis cs:1,0.73507);
+\coordinate (basegraficoh) at ([shift={(axis cs:-0.1,0.42)}]current axis.right of origin); 
 
 \end{axis}
+
+
+
+%\node[draw] at (basegraficoh) {};
+
+ \begin{scope}[scale=0.55]
+
+
+
+    \begin{axis}[at=(basegraficoh), anchor=south east,
+restrict x to domain=0.97:1,
+      xmin=0.970,xmax=1.0,
+      ymin=0.72,ymax=0.74,
+    y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=3,
+            /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+            /tikz/.cd
+    }
+ ]
+
+\addplot gnuplot [raw gnuplot,id=massXzoom,no marks,smooth]{plot 'ssm.txt' using 1:7};
+\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+
+\end{axis}
+
+\end{scope}%
+
+
 
 \end{tikzpicture}
 
