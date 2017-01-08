@@ -23,10 +23,25 @@
 \edef\Sradius{\pgfmathresult}%%%meter
 \pgfmathparse{(\solarL/(4*pi*\Sradius^2*\sigmaB))^(1/4)}%
 
+
 $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
 
 \pgfmathparse{1-0.024}
 Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathresult}$
+
+\pgfmathparse{0.9997095-0.9996820}
+\edef\DM{\pgfmathresult} %% DM
+\pgfmathparse{0.94811-0.94640}
+\edef\DRabs{\pgfmathresult} %% DRabs
+\pgfmathparse{(8.62*10^(-3)+8.136*10^(-3))/2}
+\edef\rhom{\pgfmathresult} %% rho meAn
+\pgfmathparse{1.989*10^(33)}
+\edef\solarmass{\pgfmathresult} %% solar mass
+
+\pgfmathparse{((\DM*\solarmass)/(\DRabs*4*pi*\rhom))^(1/3)}
+\edef\qradius{\pgfmathresult} %% 	radius 0.999
+
+Raggio $R(0.9997095)=\pgfmathprintnumber{\pgfmathresult}$???
 
 \pgfkeys{/pgf/fpu=false}
 
