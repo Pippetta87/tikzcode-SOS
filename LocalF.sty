@@ -22,6 +22,9 @@
 \newcommand{\ensemble}[1]{\{#1\}}
 \newenvironment{usefull}[1]{\textbf{N.B.:}\textbf{#1.}\index{#1 (Usefull)}}{$\mathfrak{Great!}$}
 
-
-
-
+\ExplSyntaxOn %% per cambiare dimnsione ad un grafico gnuplot
+\DeclareExpandableDocumentCommand{\convertlen}{ O{cm} m }
+ {
+  \dim_to_decimal_in_unit:nn { #2 } { 1 #1 } cm
+ }
+\ExplSyntaxOff

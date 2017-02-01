@@ -1,0 +1,51 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+%%% plot table 4
+\pgfplotstableread{innocentiU.txt}{\Uinversiondelta}
+
+Combination rule for statistical fluctuation of indipendent variables (Poisson-Gauss distribution) and ''conservative''
+\begin{align}
+&(\Delta Q)_{sta}=\pm\frac{1}{2}\sqrt{\sum_k(\delta Q)^2_k}\\
+&(\Delta Q)_{con}=\pm|\sum_k(\delta Q)_k|
+\end{align}
+
+
+\pgfkeys{/pgf/fpu=true, /pgf/fpu/output format=sci}
+
+% Calculate the rms
+%\pgfplotstablegetelem{ row }{ col }\of table
+%\pgfkeys{/pgf/fpu=false}
+%%%%
+%\def\gravitysurface{274}    % gravity acceleration at sun's surface in m/s^2
+%\def\radiusS{(696)} %sun's radius in meter (*(10)^(6))
+\pgfplotstablegetrowsof{\Uinversiondelta}
+\pgfmathsetmacro{\N}{\pgfplotsretval}
+
+\foreach \col in {2,3,4,5,6,7} {
+
+  \pgfmathsetmacro\rmsdelta{0}%
+  \pgfplotstableforeachcolumnelement{\col}\of\Uinversiondelta\as\val{%
+     \pgfkeys{/pgf/fpu=true}%
+         \pgfmathparse{\rmsdelta + (\val)^2}%
+     \pgfkeys{/pgf/fpu=false}%
+     \global\let\rmsdelta\pgfmathresult%
+  }%
+\pgfmathparse{sqrt{\rmsdelta/\N}}
+\pgfmathprintnumber{\pgfmathresult}
+}%
+
+
+\begin{figure}[!h]
+\begin{gnuplot}[terminal=latex,terminaloptions = {}]
+    set size ratio 1
+plot 'innocentiU.txt' using 1:2 pt 5 ps 0.1 lt black
+unset label
+set label "U" at 150,5000
+
+\end{gnuplot}
+\end{figure}
+
+
+\end{document}

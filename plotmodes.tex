@@ -1,0 +1,56 @@
+\documentclass[../main.tex]{subfiles}
+%http://soho.nascom.nasa.gov/publications/CDROM1/papers/rhodes/index.html
+
+\begin{document}
+
+
+\pgfplotstableread{MDImedium-l144.txt}{\MDImedium}
+
+
+\pgfkeys{/pgf/fpu=true, /pgf/fpu/output format=sci}
+%% k_h*R_s=l
+\pgfmathparse{(274)}
+\edef\gravitysurface{\pgfmathresult}    % gravity acceleration at sun's surface in m/s^2
+\pgfmathparse{(696)} %sun's radius in meter (*(10)^(6))
+\edef\radiusS{\pgfmathresult}
+
+\pgfmathparse{200*((0+1/2)*(\gravitysurface)*(100)/(\radiusS))^(1/2)}%%x=100
+\edef\ridge{\pgfmathresult}
+Ridge: \pgfmathprintnumber{\ridge}.
+
+\pgfkeys{/pgf/fpu=false}
+
+%\begin{tikzpicture}
+%\begin{axis}[xmin=0,xmax=310,ymin=1000,ymax=5200,
+%scale only axis,
+%width=0.7\textwidth,
+%height=0.7\textheight
+%]
+
+\def\gravitysurface{274}    % gravity acceleration at sun's surface in m/s^2
+\def\radiusS{(696)} %sun's radius in meter (*(10)^(6))
+
+%\addplot [black,only marks,
+ %      error bars/.cd, y dir=both] table [x={l}, y={nu},y error={sigma}] {\MDImedium};
+%\addplot [only marks,raw gnuplot,id=midlmodes, mark size=0.1,color=black] gnuplot {plot 'MDImedium-l144.txt' using 1:3:4};
+%\addplot[id=ridge,color=red,raw gnuplot] gnuplot {f(x)=2*10^3;  set xrange [0:250]; plot f(x)};
+%\addplot+[id=ridge,color=red,raw gnuplot] gnuplot {f(x)=200*sqrt((1+0.5)*(\gravitysurface)*(x)/(\radiusS)); set format y "\%s"; set xrange [0:250]; plot f(x)};%%%n=0
+%\end{axis}
+%\end{tikzpicture}
+
+
+
+\begin{figure}[!h]
+\begin{gnuplot}[terminal=epslatex,terminaloptions = {size \convertlen{0.99\textwidth}}]
+    set size ratio 1
+plot 'MDImedium-l144.txt' using 1:3 pt 7 ps 0.1 lt black
+unset label
+set label "low-l p modes" at 150,5000
+
+f(x)=200*sqrt((100+0.5)*(\gravitysurface)*(x)/(\radiusS)) 
+set xrange [0:250] plot f(x)
+
+\end{gnuplot}
+\end{figure}
+
+\end{document}
