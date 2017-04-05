@@ -83,14 +83,93 @@
 
 \subsection{Catena PP}
 
+\clearpage
+
+\begingroup
+\setmuskip{\thinmuskip}{0mu}\setmuskip{\medmuskip}{0mu}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position .5 with {\arrow{>}}},postaction={decorate}},
+-->/.style={decoration={
+  markings,
+  mark=at position .8 with {\arrow{>}}},postaction={decorate}},
+box/.style={%
+%draw,
+minimum width=25mm,%
+    minimum height=6mm,%
+    align=center}
+}
+\begin{tikzpicture}
+
+\node[box] (pp) at (0,0) {$\Pproton{+}\Pproton{\to}\cel{H}{2}{}{}{+}\Pnue{+}\APelectron$};%%pp
+\node[box,right=2cm of pp]  (pep) {$\Pproton{+}\Pproton{+}\Pelectron{\to}\cel{H}{2}{}{}+\Pnue$};%%pep
+\coordinate[below=0.3cm of pp] (bpp);
+\node[left] at (bpp) {$99.76\%$};
+\coordinate[below=0.3cm of pep] (bpep);
+\node[right] at (bpep) {$0.24\%$};
+
+\coordinate[] (ttriton) at ($(bpp)!0.5!(bpep)$);
+\draw[->-] (pp)--(bpp)--(ttriton);
+\draw[->-] (pep)--(bpep)--(ttriton);
+\node[box,below=0.3cm of ttriton] (triton) {$\Pproton+\cel{H}{2}{}{}\to\cel{He}{3}{}{}+\Pphoton$};%%triton
+\coordinate[below=0.3cm of triton] (btriton);
+\draw[-->] (ttriton)--(triton.north);
+\draw[->-] (triton.south)--(btriton.north);
+\coordinate[left=2.5cm of btriton] (tpp1);
+\node[left] at (tpp1) {$83.3\%$};
+\coordinate[right=2.0cm of btriton] (tberillium7);
+\node[above] at (tberillium7) {$16.7\%$};
+\coordinate[right=6.5cm of btriton] (thep);
+\node[right] at (thep) {$\num{2e-5}\%$};
+
+\draw[] (btriton)--(tpp1);
+\draw[] (btriton)--(tberillium7);
+\draw[] (tberillium7)--(thep);
+\node[box,below=0.5cm of tpp1,label={[xshift=0.1cm, yshift=-1.5cm]PPI}]  (pp1) {$\cel{He}{3}{}{}+\cel{He}{3}{}{}\to\cel{He}{4}{}{}+2\Pproton$};%%pp1
+\node[box,below=0.5cm of tberillium7]  (berillium7) {$\cel{He}{3}{}{}+\cel{He}{4}{}{}\to\cel{Be}{7}{}{}+\Pphoton$};%%berillium7
+\node[box,below=0.5cm of thep,label={[xshift=-0.1cm, yshift=-1.5cm]HEP}]  (hep) {$\cel{He}{3}{}{}+\Pproton\to\cel{He}{4}{}{}+\APelectron+\Pnue$};%%hep
+
+\draw[->-] (tpp1)--(pp1.north);
+\draw[->-] (tberillium7)--(berillium7.north);
+\draw[-->] (thep)--(hep.north);
+
+\coordinate[below=0.3cm of berillium7] (bberillium7);
+\coordinate[left=1.5cm of bberillium7] (tlithium7);
+\node[left] at (tlithium7) {$99.88\%$};
+\coordinate[right=2.0cm of bberillium7] (tboron8);
+\node[right] at (tboron8) {$0.12\%$};
+
+\node[box,below=0.5cm of tlithium7]  (li7) {$\cel{Be}{7}{}{}+\Pelectron\to\cel{Li}{7}{}{}+\Pnue$};%%Li7
+\node[box,below=0.5cm of li7,label={[xshift=0.1cm, yshift=-1.5cm]PPII}] (pp2) {$\cel{Li}{7}{}{}+\Pproton\to2\cel{He}{4}{}{}$};%% PP2
+
+\node[box,below=0.5cm of tboron8]  (b8) {$\cel{Be}{7}{}{}+\Pproton\to\cel{B}{8}{}{}+\Pphoton$};%%B8
+\node[box,below=0.25cm of b8]  (be7) {$\cel{B}{8}{}{}\to\cel{Be}{8}{}{}^*+\APelectron+\Pnue$};%%Be8*
+\node[box,below=0.25cm of be7,label={[xshift=0.1cm, yshift=-1.5cm]PPIII}]  (pp3) {$\cel{Be}{8}{}{}^*\to2\cel{He}{4}{}{}$};%%pp3
+
+\draw[->-] (berillium7.south)--(bberillium7);
+\draw[] (bberillium7)--(tlithium7);
+\draw[] (bberillium7)--(tboron8);
+
+\draw[->-] (tlithium7)--(li7.north);
+\draw[->-] (li7.south)--(pp2.north);
+
+\draw[->-] (tboron8.south)--(b8.north);
+\draw[->-] (b8.south)--(be7.north);
+\draw[->-] (be7.south)--(pp3.north);
+
+\end{tikzpicture}
+\endgroup
+
+\clearpage
+
 \subsection{Bi-ciclo CN-NO}
 
 \section{Modello solare bahcall 95}
 
 %\clearpage
 
-\subfile{bahcalldiffusion}
-
+%\subfile{bahcalldiffusion}
+%\subfile{BS05AGSOP}
 
 \section{Correzioni al MSS}
 
