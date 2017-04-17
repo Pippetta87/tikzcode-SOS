@@ -15,6 +15,8 @@
 %\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
 
 \pgfkeys{/pgf/fpu=true}
+\pgfmathparse{8.3144598*10^7}%
+\edef\gasconstant{\pgfmathresult}%%%GasConstant
 \pgfmathparse{5.670367*10^(-8)}
 \edef\sigmaB{\pgfmathresult} %% Wm-2K-4
 \pgfmathparse{3.844*10^(26)}
@@ -22,6 +24,7 @@
 \pgfmathparse{6.96*10^8}
 \edef\Sradius{\pgfmathresult}%%%meter
 \pgfmathparse{(\solarL/(4*pi*\Sradius^2*\sigmaB))^(1/4)}%
+
 
 
 $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
@@ -239,6 +242,67 @@ restrict x to domain=0.97:1,
 
 \end{scope}%
 
+\end{tikzpicture}
+
+\clearpage
+
+\begin{tikzpicture}%%Sound speed profile C^2=\Gamma_1P/\rho, \Gamma_1=5/3
+%\coordinate (coordcsquare) at ([shift={(-0.2,-0.5)}]current page.north east);
+\coordinate (coordcsquare) at (0,0);
+\begin{axis}[name=soundspeed,at=(coordcsquare),anchor=north east,axis y line*=left,
+ y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=5,
+            /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=6,
+            /tikz/.cd
+    },
+  xlabel=$\midfrac{M}{\msun{}}$,
+  ylabel=$c^2$]
+
+%\addplot gnuplot [raw gnuplot,id=csquare,no marks,smooth]{plot 'bs05_agsop.dat' using 1:(\gasconstant*$3/(2*$7+6*$8))};
+\addplot gnuplot [raw gnuplot,id=csquare,no marks,smooth]{plot 'bs05_agsop.dat' using 1:(5/3*$5/$4)};
+%\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+%\node[small dot,pin={[pin distance=0.4cm]1:{$X_c=\num{0.3649}$}}] at (axis cs:0,0.3649) {};
+
+
+%\coordinate (convectivezoney) at (axis cs:1,0.73507);
+%\coordinate (basegraficoh) at ([shift={(axis cs:-0.1,0.42)}]current axis.right of origin); 
+
+\end{axis}
+
+\coordinate (coordcsquare) at (0,0);
+\begin{axis}[name=soundspeed,at=(coordcsquare),anchor=north east,axis y line*=left,
+ y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=5,
+            /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=6,
+            /tikz/.cd
+    },
+  xlabel=$\midfrac{M}{\msun{}}$,
+  ylabel=$c^2$]
+
+\addplot gnuplot [raw gnuplot,id=csquare,no marks,smooth]{plot 'bs05_agsop.dat' using 1:(\gasconstant*$3/(2*$7+6*$8))};
+
+%\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+%\node[small dot,pin={[pin distance=0.4cm]1:{$X_c=\num{0.3649}$}}] at (axis cs:0,0.3649) {};
+
+
+%\coordinate (convectivezoney) at (axis cs:1,0.73507);
+%\coordinate (basegraficoh) at ([shift={(axis cs:-0.1,0.42)}]current axis.right of origin); 
+
+\end{axis}
 
 \end{tikzpicture}
 
