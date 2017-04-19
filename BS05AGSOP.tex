@@ -15,7 +15,7 @@
 %\pgfmathparse{0.021344211355}\pgfmathprintnumber{\pgfmathresult}
 
 \pgfkeys{/pgf/fpu=true}
-\pgfmathparse{8.3144598*10^7}%
+\pgfmathparse{8.3144598*(10)^7}%
 \edef\gasconstant{\pgfmathresult}%%%GasConstant
 \pgfmathparse{5.670367*10^(-8)}
 \edef\sigmaB{\pgfmathresult} %% Wm-2K-4
@@ -276,8 +276,8 @@ restrict x to domain=0.97:1,
 
 \end{axis}
 
-\coordinate (coordcsquare) at (0,0);
-\begin{axis}[name=soundspeed,at=(coordcsquare),anchor=north east,axis y line*=left,
+\coordinate (coordcsquarepv) at (soundspeed.east);
+\begin{axis}[name=soundspeedperfect,at=(coordcsquarepv),anchor=west,axis y line*=left,
  y tick label style={
         /pgf/number format/.cd,
             fixed,
@@ -293,7 +293,8 @@ restrict x to domain=0.97:1,
   xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=$c^2$]
 
-\addplot gnuplot [raw gnuplot,id=csquare,no marks,smooth]{plot 'bs05_agsop.dat' using 1:(\gasconstant*$3/(2*$7+6*$8))};
+%\addplot gnuplot [raw gnuplot,id=csquareperfect,no marks,smooth]{plot 'bs05_agsop.dat' using 1:(\gasconstant*$3/(2*$7+6*$8))};
+\addplot gnuplot [raw gnuplot,id=csquareperfect,no marks,smooth]{plot 'bs05_agsop.dat' using 1:($3*8.3)/(2*$7+6*$8)};
 
 %\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
 %\node[small dot,pin={[pin distance=0.4cm]1:{$X_c=\num{0.3649}$}}] at (axis cs:0,0.3649) {};
