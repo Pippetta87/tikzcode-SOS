@@ -94,7 +94,7 @@ $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
 %\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
 %\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
 %\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
-\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'BP2000.dat' using 1:4};
+\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'bp2000.dat' using 1:4};
 \node[small dot,pin=90:{$\rho_b=\num{1.554e-1}$\si{\gram\per\cubic\cm}}] at (axis cs:0.9802194,1.554e-1) {};
 \node[small dot,pin=-10:{$\rho_c=\num{1.505e2}$\si{\gram\per\cubic\cm}}] at (axis cs:0,1.505e2) {};
 
@@ -117,7 +117,7 @@ $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
 %      /tikz/.cd
 %  },
 %  axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
-%\addplot gnuplot [raw gnuplot,id=rdens,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'BP2000.dat' using 2:4};
+%\addplot gnuplot [raw gnuplot,id=rdens,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'bp2000.dat' using 2:4};
 %\end{axis}
 
 %\endgroup
@@ -144,7 +144,7 @@ yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   %ylabel shift = 5mm
   ]
 
-\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'BP2000.dat' using 1:3};
+\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'bp2000.dat' using 1:3};
 \node[small dot,pin=-10:{$T_c=\num{1.548e7}$}] at (axis cs:0,1.548e7) {};
 \node[small dot,pin={[pin distance=1cm]177:{$T_{cz}=\num{2.007e6}$}}] at (axis cs:0.9802194,2.007e6) {};
 \node[small dot,pin=180:{$T_{ph}=\SI{5777}{\kelvin}$}] at (axis cs:1,5777) {};
@@ -172,7 +172,7 @@ yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   compat=newest
   ]
 
-\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'BP2000.dat' using 1:6};
+\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'bp2000.dat' using 1:6};
 \node[small dot,pin=-120:{$\lsun{}=\SI{3.8418e33}{\erg\per\second}$}] at (axis cs:1,1) {};
 
 \end{axis}
@@ -195,7 +195,7 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
   xlabel=$\midfrac{M}{\msun{}}$,
   ylabel=X]
 
-\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'BP2000.dat' using 1:7};
+\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'bp2000.dat' using 1:7};
 %\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
 \node[small dot,pin={[pin distance=0.4cm]1:{$X_c=\num{0.3649}$}}] at (axis cs:0,0.3649) {};
 
@@ -231,7 +231,7 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
     }
  ]
 
-\addplot gnuplot [raw gnuplot,id=massXzoom,no marks,smooth]{plot 'BP2000.dat' using 1:7};
+\addplot gnuplot [raw gnuplot,id=massXzoom,no marks,smooth]{plot 'bp2000.dat' using 1:7};
 \node[small dot,pin=-110:{$X_{ph}=\num{0.7584}$}] at (axis cs:1,0.7584) {};
 
 \end{axis}
