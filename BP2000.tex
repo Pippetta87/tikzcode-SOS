@@ -26,7 +26,16 @@
 
 $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
 
-\pgfmathparse{1-0.024}
+\pgfmathparse{3.842*10^(26)}%% most recent L
+\edef\solarL{\pgfmathresult}%%%
+\pgfmathparse{6.96*10^8}
+\edef\Sradius{\pgfmathresult}%%%meter
+\pgfmathparse{(\solarL/(4*pi*\Sradius^2*\sigmaB))^(1/4)}%
+
+
+$T_{surf}=$\pgfmathprintnumber{\pgfmathresult} (with most recent luminosity)\\
+
+\pgfmathparse{1-0.02415}
 Massa inizio zona convettiva $\midfrac{M}{\msun{}}=\pgfmathprintnumber{\pgfmathresult}$
 
 \pgfmathparse{0.9997095-0.9996820}
