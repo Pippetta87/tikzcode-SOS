@@ -156,7 +156,7 @@ yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
 \addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'bp2000.dat' using 1:3};
 \node[small dot,pin=-10:{$T_c=\num{1.5696e7}$}] at (axis cs:0,1.5696e7) {};
 \node[small dot,pin={[pin distance=1cm]177:{$T_{cz}=\num{2.18e6}$}}] at (axis cs:0.97585,2.18e6) {};
-\node[small dot,pin=180:{$??T_{ph}=\SI{5777}{\kelvin}$}] at (axis cs:1,5777) {};
+\node[small dot,pin=180:{$T_{ph}=\SI{5777}{\kelvin}$}] at (axis cs:1,5777) {};
 
 \end{axis}
 
