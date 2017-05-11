@@ -49,3 +49,61 @@
 \node[anchor=north west] at ([shift={(0,10.5)}]current page.north west) {\parbox{\textwidth}{\captionof{figure}{Importanza dei varii contributi all'opacit\'a nell'interno solare. Da \cite{bla11opacity}.}\label{fig:opacitycontrib} }};
  
 \end{tikzpicture}
+
+\begin{comment}%%Tabella fattori astrofisici
+\begin{table}[!h]
+\pgfplotstabletypeset[
+%every head row/.style={before row={\toprule & Reaction & $S(0)$ & $S'(0)$ & $S''(0)$ & $\delta S(E)$\\\midrule},
+%every last row/.style={after row=\bottomrule},
+% after row={\midrule}
+%},
+col sep=&
+every last row/.style={after row=\bottomrule},
+every first column/.style={column type/.add={|}{}},
+every last column/.style={column type/.add={}{|}},
+%columns/0/.style = {column type/.add={|}{}},
+%columns/xi/.style = {column type/.add={|}{}},
+%display columns/0/.style={column name={r}},
+%display columns/1/.style={column name={S}},
+%display columns/2/.style={column name={Sst}},
+%display columns/3/.style={column name={Snd}},
+%display columns/4/.style={column name={deltaSE}}
+
+%create on use/authors/.style={create col/set list={
+%},
+%columns/authors/.style={string type},
+%columns={r,S,Sst,Snd,deltaSE},
+%/pgf/number format/precision=4
+]{reactionastrofactor.txt} %%%
+
+\captionof{table}{Fattore astrofisico. Da \cite{adelberger2011solar}.}
+\end{table}
+\end{comment}
+
+%La composizione chimica \'e modificata dalle reazioni di fusione che per gli elementi principali, assumendo condizione di equilibrio secolare, riassumo
+%%% \tag{\theequation a,b}
+%\begin{subequations}\label{subeqn:fusionchange}
+%\begin{align}
+%&\dot{X}=\frac{m_p}{N_A}(-3r_{pp}+2r_{33}-r_{34}-4r_{p14})\\ 
+%&\dot{Y}_3=\frac{m_{He3}}{N_A}(r_{pp}-2r_{33}-r_{34})\\
+%&\dot{Y}=\frac{m_{He4}}{N_A}(r_{33}+r_{34}+r_{p14})
+%\end{align}
+%\end{subequations}
+%con $r_{ik}$ rate di reazione per unit\'a di massa.
+
+\begin{table}[!h]
+
+\begin{tabular}{|ccccc|}
+{Reaction} & {$S(0) (keVb)$} & {$S'(0)$} & {$S''1(0) (bikeV)$} & {Gamow peak uncertainty (\%)}\\
+{$p(p,\APelectron\Pnue)d$} & {$(4.01 \pm 0.04)10^{-22}$} & {$(4.49 \pm 0.05)10^{-24}$} & {$  $} & {$\pm 0.7$}\\
+$d(p,\Pphoton)\cel{He}{3}{}{}$ & ${2.14}10^{-4}\substack{+0.17 \\ -0.16}$ & $ $ & $ $ & $\pm 7.1$\\
+$\cel{He}{3}{}{}(\cel{He}{3}{}{},2p)\cel{He}{4}{}{}$ & $(5.21 \pm 0.27)10^{-3}$ & $-4.9 \pm 3.2$ & $(2.2 \pm 1.7)10^{-2}$ & $\pm 4.3$\\
+$\cel{He}{3}{}{}(\cel{He}{4}{}{},\Pphoton)\cel{Be}{7}{}{}$ & $0.56 \pm 0.03$ & $(-3.6 \pm 0.2)10^{-4}$ & $(0.151 \pm 0.008)10^{-6}$ & $\pm 5.1$\\
+$\cel{He}{3}{}{}(p,\APelectron\Pnue)\cel{He}{4}{}{}$ & $(8.6 \pm 2.6)10^{-20}$ & $$ & $$ & $\pm 30$\\
+$\cel{Be}{7}{}{}(\Pelectron,\Pnue)\cel{Li}{7}{}{}$ & $ $ & $ $ & $ $ & $\pm 2.0$\\
+$p(p\Pelectron,\Pnue)d$ & $ $ & $ $ & $ $ & $\pm 1.0$\\
+$\cel{Be}{7}{}{}(p,\Pphoton)\cel{B}{8}{}{}$ & $(2.08 \pm 0.16)10^{-2}$ & $(-3.1 \pm 0.3)10^{-5}$ & $(2.3 \pm 0.8)10^{-7}$ & $\pm 7.5$\\
+%14N(p,7)150 XI.A 1.66 \pm 0.12 (-3.3 \pm 0.2) x 10-3 b (4.4 \pm 0.3) x 10-5 a \pm 7.2
+\end{tabular}
+\caption{Reaction rate \cite{adelberger2011solar}.}
+\end{table}
