@@ -1,5 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 
+\newcommand{\sunR}{R_{\odot}}
+
 \begin{document}
 
 
@@ -67,7 +69,7 @@ $T_{surf}=$\pgfmathprintnumber{\pgfmathresult}\\
 
 \clearpage
 
- %%plot SSM structure graphs
+ %%plot SSM structure graphs vs m
 
 \begin{tikzpicture}[remember picture,overlay]
 
@@ -252,5 +254,309 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
 \end{tikzpicture}
 
 \clearpage
+
+\begin{tikzpicture}
+
+\begin{axis}[name=ratioEiEc,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=4,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{r}{R_{\odot}}$,
+  ylabel=$\midfrac{2u_c}{3KT}$,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  %ylabel shift = 10mm
+  compat=newest
+  ]
+
+\addplot gnuplot [raw gnuplot,id=rEiEcratio,no marks,smooth]{plot 'bp2000.dat' using 2:(2*(4.803*10^(-10))^3*(pi*$4/(1.380*10^(-16)*$3))^(0.5)*(6.022*10^(23))^(1.5)*(2*$4*$7+5*$4*$8/4)^(1.5)/(3*$3*1.38*10^(-16)))};
+%\node[small dot,pin=-120:{$\lsun{}=\SI{3.844e33}{\erg\per\second}$}] at (axis cs:1,1) {};
+
+\end{axis}
+
+
+\begin{axis}[name=gamma,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=4,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{r}{R_{\odot}}$,
+  ylabel=$\midfrac{2u_c}{3KT}$,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  %ylabel shift = 10mm
+  compat=newest
+  ]
+
+\addplot gnuplot [raw gnuplot,id=gamma,no marks,smooth]{plot 'bp2000.dat' using 2:(((4.803*10^(-10))^2*(1)^2)/(1.380*10^(-16)*$3*()))};
+%\node[small dot,pin=-120:{$\lsun{}=\SI{3.844e33}{\erg\per\second}$}] at (axis cs:1,1) {};
+
+\end{axis}
+
+\end{tikzpicture}
+
+\clearpage
+
+ %%plot SSM structure graphs vs r
+
+\begin{tikzpicture}[remember picture,overlay]
+
+%\begingroup
+%\pgfplotsset{
+%every axis x label/.style={
+%    at={(ticklabel* cs:1.05)},
+%    yshift = -7.5pt,
+%    anchor=west,},
+%    every axis y label/.style={at={(current axis.above origin)},
+%    anchor=north east,
+%    yshift = 1cm}}
+
+\coordinate (coordd) at ([shift={(1.8,-0.5)}]current page.north west);
+\draw (coordd);
+\begin{axis}[clip=false,name=massdensity, at=(coordd),anchor=north west,
+ y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=1,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=1,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{R}{\sunR{}}$,
+  ylabel=$\rho(\si{\gram\per\cubic\cm})$,axis y line*=left,
+  extra y ticks={}
+  ]
+%\addplot+[smooth] table [y=rho, x=M]{ssm.txt};
+%\draw[color=black] plot[smooth,mark=*,mark size=1pt] file {ssm.txt} node [right] {data};
+%\addplot gnuplot [raw gnuplot, id=test, mark=none, color=blue]{plot "test2" using ($1):($4) {ssm.txt}  };
+\addplot gnuplot [raw gnuplot,id=RM,no marks,smooth]{set format x "\%8.7f"; plot 'bp2000.dat' using 2:4};
+\node[small dot,pin=90:{$\rho_b=\num{1.869e-01}$\si{\gram\per\cubic\cm}}] at (axis cs:0.71377,1.869e-01) {};
+\node[small dot,pin=-10:{$\rho_c=\num{1.527e2}$\si{\gram\per\cubic\cm}}] at (axis cs:0,1.527e2) {};
+
+%plot 'ssm.txt' u 1:1 smooth bezier}
+%\node[black,right] at (axis cs:8,1.5) {$\rho_c$};
+%\node[] at ($(coordd)+(3,-3)$) {$a)hgilgiguiytuiuyt$};
+\end{axis}
+
+%\begin{axis}[name=densityradius, at=(coordd),anchor=north west,
+%y tick label style={
+%       /pgf/number format/.cd,
+%          fixed,
+%          precision=1,
+%       /tikz/.cd
+%  },
+%  x tick label style={
+%      /pgf/number format/.cd,
+%         fixed,
+%          precision=1,
+%      /tikz/.cd
+%  },
+%  axis y line*=right,ylabel=$\rho(\si{\gram\per\cubic\cm})$,xlabel=$\midfrac{R}{\rsun{}}$]
+%\addplot gnuplot [raw gnuplot,id=rdens,no marks,smooth,color=grey]{set format x "\%8.7f"; plot 'bp2000.dat' using 2:4};
+%\end{axis}
+
+%\endgroup
+
+
+\coordinate (coordt) at ([shift={(-0.2,1.5)}]current page.south east);
+\begin{axis}[name=temp,at=(coordt),anchor=south east,axis y line*=left,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=2,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{R}{\sunR{}}$,
+  ylabel=T,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  compat=newest
+  %ylabel shift = 5mm
+  ]
+
+\addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'bp2000.dat' using 2:3};
+\node[small dot,pin=-10:{$T_c=\num{1.5696e7}$}] at (axis cs:0,1.5696e7) {};
+\node[small dot,pin={[pin distance=1cm]177:{$T_{cz}=\num{2.18e6}$}}] at (axis cs:0.71377,2.18e6) {};
+\node[small dot,pin=180:{$T_{ph}=\SI{5777}{\kelvin}$}] at (axis cs:1,5777) {};
+
+\end{axis}
+
+\coordinate (coordl) at ([shift={(2.8,1.5)}]current page.south west);
+\begin{axis}[name=luminosity,at=(coordl),anchor=south west,axis y line*=left,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=4,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{R}{\sunR{}}$,
+  ylabel=$\midfrac{L}{\lsun{}}$,
+yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  %ylabel shift = 10mm
+  compat=newest
+  ]
+
+\addplot gnuplot [raw gnuplot,id=massL,no marks,smooth]{plot 'bp2000.dat' using 1:6};
+\node[small dot,pin=-120:{$\lsun{}=\SI{3.844e33}{\erg\per\second}$}] at (axis cs:1,1) {};
+
+\end{axis}
+
+\coordinate (coordh) at ([shift={(-0.2,-0.5)}]current page.north east);
+\begin{axis}[name=hydrogen,at=(coordh),anchor=north east,axis y line*=left,
+ymax=0.8,xmin=-0.1,ymin=0.32,
+ y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=5,
+            /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=6,
+            /tikz/.cd
+    },
+  xlabel=$\midfrac{R}{\sunR{}}$,
+  ylabel=X]
+
+\addplot gnuplot [raw gnuplot,id=massX,no marks,smooth]{plot 'bp2000.dat' using 2:7};
+%\node[small dot,pin=-110:{$X_{ph}=\num{0.73507}$}] at (axis cs:1,0.73507) {};
+\node[small dot,pin={[pin distance=0.4cm]10:{$X_c=\num{0.3397}$}}] at (axis cs:0,0.3397) {};
+
+\coordinate (convectivezone) at (axis cs:0.97,0.73507);
+\coordinate (convectivezonex) at (axis cs:0.97,0.75);
+\coordinate (convectivezoney) at (axis cs:1,0.73507);
+\coordinate (basegraficoh) at ([shift={(axis cs:-0.1,+0.42)}]current axis.right of origin); 
+
+\end{axis}
+
+
+
+%\node[draw] at (basegraficoh) {};
+
+\begin{scope}[scale=0.50, every node/.style={scale=1.25}]
+
+
+
+    \begin{axis}[at=(basegraficoh), anchor=south east,
+    restrict x to domain=0.945:1,
+      xmin=0.945,xmax=1.0,
+      ymin=0.70,ymax=0.75,
+    y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            precision=3,
+            /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+            /tikz/.cd
+    }
+ ]
+
+\addplot gnuplot [raw gnuplot,id=massXzoom,no marks,smooth]{plot 'bp2000.dat' using 2:7};
+\node[small dot,pin=-110:{$X_{ph}=\num{0.73936}$}] at (axis cs:1,0.73936) {};
+
+\end{axis}
+
+\end{scope}%
+
+
+\end{tikzpicture}
+
+\clearpage
+
+
+\begin{tikzpicture}
+
+\begin{axis}[name=cs,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=4,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{r}{R_{\odot}}$,
+  ylabel=$c_s$,
+%yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  %ylabel shift = 10mm
+  compat=newest
+  ]
+
+\addplot gnuplot [raw gnuplot,id=BP00cs,no marks,smooth]{plot 'bp2000soundspeeds.dat' using 1:2};
+%\node[small dot,pin=-120:{$\lsun{}=\SI{3.844e33}{\erg\per\second}$}] at (axis cs:1,1) {};
+
+\end{axis}
+
+\end{tikzpicture}
+
+\clearpage
+
+\begin{tikzpicture}
+
+\begin{axis}[name=edensity,
+ y tick label style={
+        /pgf/number format/.cd,
+            sci,
+            precision=4,
+        /tikz/.cd
+    },
+    x tick label style={
+        /pgf/number format/.cd,
+           fixed,
+            precision=3,
+        /tikz/.cd
+    },
+  xlabel=$\midfrac{r}{R_{\odot}}$,
+  ylabel=$n_e$,
+%yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
+  %ylabel shift = 10mm
+  compat=newest
+  ]
+
+\addplot gnuplot [raw gnuplot,id=BP00eldensity,no marks,smooth]{plot 'bp2000electrondensity.dat' using 1:2};
+%\node[small dot,pin=-120:{$\lsun{}=\SI{3.844e33}{\erg\per\second}$}] at (axis cs:1,1) {};
+
+\end{axis}
+
+\end{tikzpicture}
 
 \end{document}
