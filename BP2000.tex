@@ -8,7 +8,7 @@
 \pgfplotsset{yticklabel style={text width=3em,align=right},every axis plot post/.append style={black}
 }
 
-\tikzset{ every pin/.style={pin edge={black!10!white},draw={black!10!white},rectangle,rounded corners=3pt,font=\tiny}, small dot/.style={fill=black,circle,scale=0.1} }
+\tikzset{ every pin/.style={pin edge={black!20!white},draw={black!20!white},rectangle,rounded corners=1pt,font=\tiny,inner sep=1mm}, small dot/.style={fill=black!60!white,circle,scale=0.1} }
 
 %\pgfmathparse{1.1}\pgfmathprintnumber{\pgfmathresult}
 %\pgfmathparse{11}\pgfmathprintnumber{\pgfmathresult}
@@ -255,6 +255,8 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
 
 \clearpage
 
+\begin{comment}
+
 \begin{tikzpicture}
 
 \begin{axis}[name=ratioEiEc,
@@ -309,6 +311,8 @@ yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
 \end{axis}
 
 \end{tikzpicture}
+
+\end{comment}
 
 \clearpage
 
@@ -400,8 +404,8 @@ yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
 
 \addplot gnuplot [raw gnuplot,id=massT,no marks,smooth]{plot 'bp2000.dat' using 2:3};
 \node[small dot,pin=-10:{$T_c=\num{1.5696e7}$}] at (axis cs:0,1.5696e7) {};
-\node[small dot,pin={[pin distance=1cm]177:{$T_{cz}=\num{2.18e6}$}}] at (axis cs:0.71377,2.18e6) {};
-\node[small dot,pin=180:{$T_{ph}=\SI{5777}{\kelvin}$}] at (axis cs:1,5777) {};
+\node[small dot,pin={[pin distance=1cm]180:{$T_{cz}=\num{2.18e6}$}}] at (axis cs:0.71377,2.18e6) {};
+\node[small dot,pin={[pin distance=1.2cm]95:{$T_{ph}=\SI{5777}{\kelvin}$}}] at (axis cs:1,5777) {};
 
 \end{axis}
 
@@ -469,8 +473,8 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
 
 
     \begin{axis}[at=(basegraficoh), anchor=south east,
-    restrict x to domain=0.945:1,
-      xmin=0.945,xmax=1.0,
+    restrict x to domain=0.55:1,
+      xmin=0.55,xmax=1.0,
       ymin=0.70,ymax=0.75,
     y tick label style={
         /pgf/number format/.cd,
@@ -501,7 +505,7 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
 
 \begin{tikzpicture}
 
-\begin{axis}[name=cs,
+\begin{axis}[name=cs,height=0.8\textheight,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -514,8 +518,8 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
             precision=3,
         /tikz/.cd
     },
-  xlabel=$\midfrac{r}{R_{\odot}}$,
-  ylabel=$c_s$,
+  xlabel=$\midfrac{R}{R_{\odot}}$,
+  ylabel=$c_s (km/s)$,
 %yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   %ylabel shift = 10mm
   compat=newest
@@ -532,7 +536,7 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
 
 \begin{tikzpicture}
 
-\begin{axis}[name=edensity,
+\begin{axis}[name=edensity,height=0.8\textheight,
  y tick label style={
         /pgf/number format/.cd,
             sci,
@@ -545,8 +549,8 @@ ymax=0.8,xmin=-0.1,ymin=0.32,
             precision=3,
         /tikz/.cd
     },
-  xlabel=$\midfrac{r}{R_{\odot}}$,
-  ylabel=$n_e$,
+  xlabel=$\midfrac{R}{R_{\odot}}$,
+  ylabel=$\log{(N_e/N_A)}$,
 %yticklabel={\ifdim\tick pt=0pt 0 \else\pgfmathprintnumber{\tick}\fi},
   %ylabel shift = 10mm
   compat=newest
